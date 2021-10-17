@@ -10,6 +10,16 @@ interface Carriage {
 	modifier?: Sentence,
 }
 
+export enum EngineType {
+	verb = 'verb',
+}
+
+interface Engine {
+	word: Word,
+	type: EngineType,
+}
+
 export interface Sentence {
-	parts: Carriage[]
+	parts: Carriage[],
+	end: Engine,
 }
