@@ -4,22 +4,22 @@ export enum CarriageType {
 	ga = 'ga',
 }
 
-interface Carriage {
-	word: Word,
+interface Carriage<T = Word> {
+	word: T,
 	type: CarriageType,
-	modifier?: Sentence,
+	modifier?: Sentence<T>,
 }
 
 export enum EngineType {
 	verb = 'verb',
 }
 
-interface Engine {
-	word: Word,
+interface Engine<T = Word> {
+	word: T,
 	type: EngineType,
 }
 
-export interface Sentence {
-	parts: Carriage[],
-	end: Engine,
+export interface Sentence<T = Word> {
+	parts: Carriage<T>[],
+	end: Engine<T>,
 }
