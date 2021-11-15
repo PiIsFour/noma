@@ -8,6 +8,10 @@ export const fakeLessonRepo: LessonRepo = {
 	getLessons: () => lessons,
 }
 
+export const createFakeLessonRepo = (lessons: Lesson[]): LessonRepo => ({
+	getLessons: () => lessons,
+})
+
 const addLesson = (lesson: Omit<Lesson, 'id' | 'level'>): Lesson => {
 	const newLesson = {
 		...lesson,
@@ -18,7 +22,7 @@ const addLesson = (lesson: Omit<Lesson, 'id' | 'level'>): Lesson => {
 	return newLesson
 }
 
-addLesson({
+export const NounGaVerbLesson = addLesson({
 	type: 'StandAloneLesson',
 	sentence: {
 		parts: [

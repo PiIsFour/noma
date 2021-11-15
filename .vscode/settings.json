@@ -3,5 +3,8 @@
 		"**/__snapshots__": true,
 		"node_modules": true,
 		".storybook": true,
-	}
+	},
+	"cSpell.words": [
+		"sakura"
+	]
 }

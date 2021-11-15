@@ -1,6 +1,6 @@
 import { pipe } from 'fp-ts/function'
 import { ap, Option, some } from 'fp-ts/Option'
-import { CarriageType, EngineType, Sentence } from '../../domain/sentence'
+import { ga, Sentence, verb } from '../../domain/sentence'
 import { PartsOfSpeech, Word } from '../../domain/word'
 import { WordRepo } from '../ports/wordsRepo'
 
@@ -11,19 +11,11 @@ export interface Question {
 
 export const getQuestion = (wordRepo: WordRepo) => (): Option<Question> => {
 	return pipe(
-		some((sakura: Word) => (walk: Word): Question => ({
+		some((noun: Word) => (v: Word): Question => ({
 			kanji: 'さくらが歩く。',
 			sentence: {
-				parts: [
-					{
-						type: CarriageType.ga,
-						word: sakura,
-					},
-				],
-				end: {
-					type: EngineType.verb,
-					word: walk,
-				},
+				parts: [ga(noun)],
+				end: verb(v),
 			},
 		})),
 		ap(wordRepo.getWord(part => part.includes(PartsOfSpeech.noun))),
