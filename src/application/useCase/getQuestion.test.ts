@@ -19,7 +19,7 @@ describe('getQuestion', () => {
 		}))
 	})
 
-	xit('returns さくらが歩く。', () => {
+	it('returns さくらが可愛い。', () => {
 		const wordRepo = createFakeWordRepo([sakura, cute])
 		const lessonRepo = createFakeLessonRepo([NounGaIAdjLesson])
 
