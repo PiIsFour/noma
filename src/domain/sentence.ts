@@ -14,6 +14,7 @@ export const ga = <T = Word>(word: T, modifier?: Sentence<T>): Carriage<T> => ({
 
 export enum EngineType {
 	verb = 'verb',
+	iAdj = 'iAdj',
 }
 
 export interface Engine<T = Word> {
@@ -22,6 +23,7 @@ export interface Engine<T = Word> {
 }
 
 export const verb = <T = Word>(word: T): Engine<T> => ({ word, type: EngineType.verb })
+export const iAdj = <T = Word>(word: T): Engine<T> => ({ word, type: EngineType.iAdj })
 
 export interface Sentence<T = Word> {
 	parts: Carriage<T>[],

@@ -1,24 +1,22 @@
 import { pipe } from 'fp-ts/function'
-import { ap, Option, some } from 'fp-ts/Option'
-import { ga, Sentence, verb } from '../../domain/sentence'
-import { PartsOfSpeech, Word } from '../../domain/word'
+import { map, Option } from 'fp-ts/Option'
+import { Sentence } from '../../domain/sentence'
+import { LessonRepo } from '../ports/lessonRepo'
 import { WordRepo } from '../ports/wordsRepo'
+import { calculateConcreteSentence } from '../../domain/abstractSentence'
 
 export interface Question {
 	kanji: string,
 	sentence: Sentence
 }
 
-export const getQuestion = (wordRepo: WordRepo) => (): Option<Question> => {
+export const getQuestion = (wordRepo: WordRepo, lessonRepo: LessonRepo) => (): Option<Question> => {
 	return pipe(
-		some((noun: Word) => (v: Word): Question => ({
+		lessonRepo.getLessons()[0].sentence,
+		calculateConcreteSentence(wordRepo),
+		map(sentence => ({
 			kanji: 'さくらが歩く。',
-			sentence: {
-				parts: [ga(noun)],
-				end: verb(v),
-			},
+			sentence,
 		})),
-		ap(wordRepo.getWord(part => part.includes(PartsOfSpeech.noun))),
-		ap(wordRepo.getWord(part => part.includes(PartsOfSpeech.verb))),
 	)
 }

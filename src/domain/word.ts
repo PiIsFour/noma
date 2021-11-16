@@ -1,6 +1,7 @@
 export enum PartsOfSpeech {
 	noun = 'noun',
-	verb = 'verb'
+	verb = 'verb',
+	iAdj = 'iAdj',
 }
 
 export interface Word {

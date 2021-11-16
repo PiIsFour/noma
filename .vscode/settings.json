@@ -5,6 +5,7 @@
 		".storybook": true,
 	},
 	"cSpell.words": [
+		"Monoid",
 		"sakura"
 	]
 }

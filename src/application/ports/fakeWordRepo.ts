@@ -16,6 +16,13 @@ export const walk: Word = {
 	partsOfSpeech: [PartsOfSpeech.verb],
 }
 
+export const cute: Word = {
+	hiragana: 'かわいい',
+	kanji: '可愛い',
+	translation: 'cute',
+	partsOfSpeech: [PartsOfSpeech.iAdj],
+}
+
 export const createFakeWordRepo = (words: Word[]): WordRepo => ({
 	getWord: filter => fromNullable(words.find(w => filter(w.partsOfSpeech))),
 })

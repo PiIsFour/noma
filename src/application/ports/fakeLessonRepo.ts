@@ -1,4 +1,5 @@
-import { CarriageType, EngineType } from '../../domain/sentence'
+import { AbstractWord } from '../../domain/abstractSentence'
+import { ga, iAdj, verb } from '../../domain/sentence'
 import { PartsOfSpeech } from '../../domain/word'
 import { Lesson, LessonRepo } from './lessonRepo'
 
@@ -22,22 +23,30 @@ const addLesson = (lesson: Omit<Lesson, 'id' | 'level'>): Lesson => {
 	return newLesson
 }
 
+const aNoun: AbstractWord = {
+	conditions: [PoS => PoS.includes(PartsOfSpeech.noun)],
+}
+
+const aVerb: AbstractWord = {
+	conditions: [PoS => PoS.includes(PartsOfSpeech.verb)],
+}
+
+const aIAdj: AbstractWord = {
+	conditions: [PoS => PoS.includes(PartsOfSpeech.iAdj)],
+}
+
 export const NounGaVerbLesson = addLesson({
 	type: 'StandAloneLesson',
 	sentence: {
-		parts: [
-			{
-				type: CarriageType.ga,
-				word: {
-					conditions: [(PoS) => PoS.includes(PartsOfSpeech.noun)],
-				},
-			},
-		],
-		end: {
-			type: EngineType.verb,
-			word: {
-				conditions: [PoS => PoS.includes(PartsOfSpeech.verb)],
-			},
-		},
+		parts: [ga(aNoun)],
+		end: verb(aVerb),
+	},
+})
+
+export const NounGaIAdjLesson = addLesson({
+	type: 'StandAloneLesson',
+	sentence: {
+		parts: [ga(aNoun)],
+		end: iAdj(aIAdj),
 	},
 })

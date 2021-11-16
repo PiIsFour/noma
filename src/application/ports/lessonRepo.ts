@@ -10,7 +10,7 @@ export interface StandAloneLesson extends LessonBase {
 	sentence: AbstractSentence
 }
 
-export type Lesson = (StandAloneLesson)
+export type Lesson = StandAloneLesson
 
 export interface LessonRepo {
 	getLessons(): Array<Lesson>
