@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carriage matches snapshot 1`] = `
+<div
+  className="carriage carriage-ga"
+>
+  さくら
+  <span
+    className="particle"
+  >
+    が
+  </span>
+</div>
+`;

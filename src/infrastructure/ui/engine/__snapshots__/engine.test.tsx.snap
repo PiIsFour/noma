@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Engine matches snapshot 1`] = `
+<div
+  className="engine engine-verb"
+>
+  歩く
+</div>
+`;

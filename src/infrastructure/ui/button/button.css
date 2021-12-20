@@ -1,0 +1,13 @@
+.button {
+	display: inline-block;
+	border: 0;
+	border-radius: .5em;
+	color: snow;
+	background-color: transparent;
+	box-shadow: snow 0px 0px 0px 1px inset;
+	font-size: calc(10px + 2vmin);
+	padding: 1em 3em;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 1;
+}

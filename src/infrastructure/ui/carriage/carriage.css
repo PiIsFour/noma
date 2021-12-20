@@ -1,0 +1,16 @@
+.carriage {
+	display: inline-block;
+	color: snow;
+	font-size: calc(10px + 2vmin);
+	display: inline-block;
+	text-decoration: var(--particle-color) underline;
+	padding-right: .5rem;
+}
+
+.carriage > .particle {
+	color: var(--particle-color);
+}
+
+.carriage-ga {
+	--particle-color: red;
+}

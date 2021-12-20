@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Answer matches snapshot 1`] = `
+<div
+  className="answer"
+>
+  <Carriage
+    carriage={
+      Object {
+        "modifier": undefined,
+        "type": "ga",
+        "word": Object {
+          "hiragana": "さくら",
+          "kanji": "さくら",
+          "partsOfSpeech": Array [
+            "noun",
+          ],
+          "translation": "sakura",
+        },
+      }
+    }
+  />
+  <Engine
+    engine={
+      Object {
+        "type": "verb",
+        "word": Object {
+          "hiragana": "あるく",
+          "kanji": "歩く",
+          "partsOfSpeech": Array [
+            "verb",
+          ],
+          "translation": "walk",
+        },
+      }
+    }
+  />
+</div>
+`;

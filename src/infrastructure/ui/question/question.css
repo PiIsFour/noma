@@ -1,0 +1,5 @@
+.question {
+	color: snow;
+	font-size: calc(10px + 2vmin);
+	letter-spacing: .1rem;
+}
