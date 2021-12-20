@@ -9,6 +9,6 @@ describe('renderSentence', () => {
 			parts: [ga(sakura)],
 			end: iAdj(cute),
 		}
-		expect(renderSentence(sentence)).toEqual('さくらが可愛い。')
+		expect(renderSentence(sentence)).toEqual('さくらが可愛い')
 	})
 })

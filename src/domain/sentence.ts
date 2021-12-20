@@ -52,5 +52,5 @@ export const renderSentence = (sentence: Sentence): string => {
 			end: renderEnd,
 		}),
 	)
-	return `${ parts }${ end }。`
+	return `${ parts }${ end }`
 }
