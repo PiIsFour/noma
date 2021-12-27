@@ -26,3 +26,5 @@ export const cute: Word = {
 export const createFakeWordRepo = (words: Word[]): WordRepo => ({
 	getWord: filter => fromNullable(words.find(w => filter(w.partsOfSpeech))),
 })
+
+export const fakeWordRepo = createFakeWordRepo([sakura, walk, cute])
