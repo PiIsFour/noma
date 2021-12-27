@@ -3,32 +3,44 @@ import { fold } from 'fp-ts/lib/Option'
 import React, { useEffect, useState } from 'react'
 import { fakeLessonRepo } from '../../../application/ports/fakeLessonRepo'
 import { fakeWordRepo } from '../../../application/ports/fakeWordRepo'
-import { getQuestion } from '../../../application/useCase/getQuestion'
+import { getQuestion, Question as QuestionType } from '../../../application/useCase/getQuestion'
+import { Question } from '../question/question'
 
-enum Stage{
-	loading = 'loading',
-	error = 'error',
-	ask = 'ask',
+class Loading {
+	render(): JSX.Element{
+		return <div>loading next lesson</div>
+	}
 }
+
+class Error {
+	render(): JSX.Element{
+		return <div>Error</div>
+	}
+}
+
+class Ask {
+	constructor(private question: QuestionType){}
+	render(): JSX.Element{
+		return <Question kanji={this.question.kanji} />
+	}
+}
+
+type Stage = Loading | Error | Ask
 
 const nextQuestion = getQuestion(fakeWordRepo, fakeLessonRepo)
 
 export const Learn = (): JSX.Element => {
-	const [stage, setStage] = useState(Stage.loading)
+	const [stage, setStage] = useState<Stage>(new Loading())
 
 	useEffect(() => {
 		pipe(
 			nextQuestion(),
 			fold(
-				() => setStage(Stage.error),
-				question => setStage(Stage.ask),
+				() => setStage(new Error()),
+				question => setStage(new Ask(question)),
 			),
 		)
 	}, [])
 
-	if(stage === Stage.loading){
-		return <div>loading next lesson</div>
-	}
-
-	return <div>Learning</div>
+	return stage.render()
 }
