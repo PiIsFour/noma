@@ -1,5 +1,5 @@
 import { pipe } from 'fp-ts/function'
-import { map, Option } from 'fp-ts/Option'
+import { fromNullable, map, chain, Option } from 'fp-ts/Option'
 import { renderSentence, Sentence } from '../../domain/sentence'
 import { LessonRepo } from '../ports/lessonRepo'
 import { WordRepo } from '../ports/wordsRepo'
@@ -18,8 +18,9 @@ export const getQuestion = (wordRepo: WordRepo, lessonRepo: LessonRepo) => (): O
 		// TODO: select lesson in some balanced way
 		lessonRepo.getLessons(),
 		randomItem,
-		(lesson) => lesson.sentence,
-		calculateConcreteSentence(wordRepo),
+		fromNullable,
+		map((lesson) => lesson.sentence),
+		chain(calculateConcreteSentence(wordRepo)),
 		map(sentence => ({
 			kanji: renderSentence(sentence),
 			sentence,
