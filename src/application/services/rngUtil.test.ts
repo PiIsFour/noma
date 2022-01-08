@@ -1,6 +1,11 @@
 import { randomItemFromArray } from './rngUtil'
 
 describe('random item from array', () => {
+	it('undefined if empty array', () => {
+		const rng = () => 0
+		expect(randomItemFromArray(rng)([])).toBe(undefined)
+	})
+
 	it('pick the one item', () => {
 		const rng = () => 0
 		expect(randomItemFromArray(rng)(['single item'])).toBe('single item')
